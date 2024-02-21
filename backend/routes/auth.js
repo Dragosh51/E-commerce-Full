@@ -5,6 +5,7 @@ const bcrypt = require('bcrypt');
 const db = require('../models')
 const jwt = require('jsonwebtoken');
 require('dotenv').config({ path: __dirname + '/../.env' });
+const auth = require('../middleware/verifyToken');
 
 const createPK = (str) => {
     const today = new Date();
@@ -37,6 +38,26 @@ router.post('/authFacebook', async (req, res) => {
         console.error('Error retrieving all users', error);
         res.status(500).json({ error: 'Internal Server Error' });
     }
+});
+
+router.get("/user", auth, (req, res) => {
+    console.log("CALLING FETCH USER ROUTE ", "\n", Date());
+    console.log("FETCH USER ", req.user.id);
+    db.user
+        .findOne({
+            where: {
+                userID: req.user.id,
+            },
+        })
+        .then((user) => {
+            let newUser = {
+                name: user.name,
+                email: user.email,
+            };
+            console.log("NEW USER", newUser);
+            res.status(200).json(newUser);
+        })
+        .catch((err) => res.status(401).json(err));
 });
 
 router.post('/login', async (req, res) => {
@@ -109,7 +130,7 @@ router.post('/login', async (req, res) => {
 //                 console.log('USER_FOUND', user);
 //                 console.log(psw, user.password)
 //                 bcrypt
-                
+
 //                     .compare(psw, user.password)
 //                     .then((isValid) => {
 //                         console.log(psw, user.password)

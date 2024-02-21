@@ -1,6 +1,6 @@
   const initState = {
     token: localStorage.getItem("token"),
-    isAuthentificated: null,
+    isAuthenticated: null,
     isLoading: false,
     user: JSON.parse(localStorage.getItem("user")),
     errors: null,
@@ -16,7 +16,7 @@
       case 'FETCHED_USER':
         return {
           ...state,
-          isAuthentificated: true,
+          isAuthenticated: true,
           isLoading: false,
           user: action.payload,
         };
@@ -26,7 +26,7 @@
         return {
           ...state,
           token: action.payload.token,
-          isAuthentificated: true,
+          isAuthenticated: true,
           user: action.payload.user,
           errors: null,
         };
@@ -38,7 +38,7 @@
         return {
           ...state,
           token: action.payload.token,
-          isAuthentificated: true,
+          isAuthenticated: true,
           user: action.payload.user,
           errors: null,
         };
@@ -62,7 +62,7 @@
         return {
           ...state,
           token: null,
-          isAuthentificated: null,
+          isAuthenticated: null,
           isLoading: false,
           user: null,
           errors: null,

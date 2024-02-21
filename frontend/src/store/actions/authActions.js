@@ -20,6 +20,43 @@ export const loginFacebook = () => (dispatch) => {
   // });
 };
 
+export const logout = () => {
+  return {
+    type: 'LOGOUT_SUCCESFUL',
+  };
+};
+
+export const fetchUser = () => (dispatch, getState) => {
+  dispatch({ type: 'FETCH_USER' });
+
+  const token = getState().auth.token;
+
+  // Headers
+  const config = {
+    headers: {
+      'Content-type': 'application/json',
+    },
+  };
+
+  if (token) {
+    config.headers['auth-token'] = token;
+  }
+
+  axios
+    .get(`http://localhost:5343/auth/user`, config)
+    .then((res) => {
+      // console.log("FETCH USER", res.data)
+      dispatch({
+        type: 'FETCHED_USER',
+        payload: res.data,
+      });
+    })
+    .catch((err) => {
+      // console.log(err);
+      dispatch(logout());
+    });
+};
+
 export const login = (email, pass) => (dispatch) => {
   console.log(email, pass);
   const data = {
