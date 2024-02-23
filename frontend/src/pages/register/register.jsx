@@ -1,3 +1,4 @@
+import './register.css';
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 
@@ -34,7 +35,7 @@ export const Register = (props) => {
   };
 
   return (
-    <div className="auth-form-container">
+    <div className="auth-form-container Register">
       <h2>Register</h2>
       <form className="register-form" onSubmit={handleSubmit}>
         <label htmlFor="name">Full name</label>

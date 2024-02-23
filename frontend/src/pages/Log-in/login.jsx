@@ -1,3 +1,4 @@
+import './login.css'
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 
@@ -23,7 +24,7 @@ const Login = (props) => {
   };
 
   return (
-    <div className="auth-form-container App">
+    <div className="auth-form-container Login">
       <h2>Login</h2>
       <form className="login-form" onSubmit={handleSubmit}>
         <label htmlFor="email">Email</label>
