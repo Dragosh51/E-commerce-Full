@@ -11,35 +11,29 @@ const Home = () => {
   //   dispatch()
   // }, [dispatch]);
 
-  const products = useSelector(({ products }) => products.products);
+  const products = [];
+
+  const addToCart = (productID) => {
+    console.log(`Product ${productID} added to cart`);
 
 
-  return (
-    <div className='Home'>
-      <div className='cart-button'>
-        <button>Cart</button>
-      </div>
-      <div className='products-container'>
-        <div className="product">
-          <h2>Product 1</h2>
-          {/* <img src="product1.jpg" alt="Product 1"> */}
-          <button>Add to Cart</button>
+    return (
+      <div className='Home'>
+        <div className='cart-button'>
+          <button>Cart</button>
         </div>
-
-        <div className="product">
-          <h2>Product 2</h2>
-          {/* <img src="product2.jpg" alt="Product 2"> */}
-          <button>Add to Cart</button>
-        </div>
-
-        <div className="product">
-          <h2>Product 3</h2>
-          {/* <img src="product3.jpg" alt="Product 3"> */}
-          <button>Add to Cart</button>
+        <div className='products-container'>
+          {products.map((product) => (
+            <div key={product.productID} className='product'>
+              <h2>{product.productName}</h2>
+              <img src={product.image} alt={product.productName} />
+              <button className='addbutton' onClick={() => addToCart(product.productID)}>Add to Cart</button>
+            </div>
+          ))}
         </div>
       </div>
-    </div>
-  );
-};
+    );
+  };
+}
 
 export default Home;

@@ -1,9 +1,3 @@
-import {
-    FETCHING_PRODUCTS,
-    FETCHED_PRODUCTS,
-    ERROR_FETCH,
-  } from '../actions/productActions';
-
 const initState = {
     loading: false,
     error: null,
