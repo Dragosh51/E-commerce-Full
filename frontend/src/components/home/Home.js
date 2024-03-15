@@ -1,19 +1,25 @@
 import './Home.css'
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
+import { fetchProducts } from '../../store/actions/productActions';
 
 const Home = () => {
   const [cart, setCart] = useState([]);
-  const products = useSelector((state) => state.products);
+  const products = useSelector((state) => state.products.products);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, [dispatch]);
 
   const addToCart = (productID) => {
     const productToAdd = products.find((product) => product.productID === productID);
     setCart((prevCart) => [...prevCart, productToAdd]);
     console.log(`Product ${productID} added to cart`);
   };
+
+  console.log('Products:', products);
 
 
   return (

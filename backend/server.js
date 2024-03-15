@@ -1,11 +1,7 @@
 const express = require('express');
 const session = require('express-session');
-const passport = require('passport');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const { pool } = require('./config/db.config'); 
-const passportConfig = require('./middleware/passport');
-const db = require('./models')
 
 const app = express();
 const port = process.env.PORT || 5343;

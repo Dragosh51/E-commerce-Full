@@ -3,14 +3,10 @@ import { fetchProducts } from './productsActions';
 
 export const addToCart = (product) => (dispatch, getState) => {
   let itemsPrice = 0;
-  getState().products.cartItems
-    ? (itemsPrice = getState().products.itemsPrice)
-    : (itemsPrice = JSON.parse(localStorage.getItem('cartPrice')));
+  getState().products.products(itemsPrice = getState().products.itemsPrice);
 
   let products;
-  getState().products.cartItems
-    ? (products = getState().products.cartItems)
-    : (products = JSON.parse(localStorage.getItem('cartItems')));
+  getState().products.products(products = getState().products.cartItems);
 
   let items;
   if (products === null) {
@@ -55,24 +51,16 @@ export const addToCart = (product) => (dispatch, getState) => {
 
 export const deleteItem = (productID) => (dispatch, getState) => {
   let products;
-  getState().products.cartItems
-    ? (products = getState().products.cartItems)
-    : (products = JSON.parse(localStorage.getItem('cartItems')));
+  getState().products.products(products = getState().products.cartItems);
 
   let price;
-  getState().products.cartItems
-    ? (price = parseFloat(getState().products.cartItems[index].price))
-    : (price = parseFloat(JSON.parse(localStorage.getItem('cartItems'))[index].price));
+  getState().products.products(price = parseFloat(getState().products.cartItems[index].price));
 
   let multiple;
-  getState().products.cartItems
-    ? (multiple = getState().products.cartItems[index].count)
-    : (multiple = JSON.parse(localStorage.getItem('cartItems'))[index].count);
+  getState().products.products(multiple = getState().products.cartItems[index].count);
 
   let total;
-  getState().products.itemsPrice
-    ? (total = parseFloat(getState().products.itemsPrice))
-    : (total = parseFloat(JSON.parse(localStorage.getItem('cartPrice'))));
+  getState().products.itemsPrice(total = parseFloat(getState().products.itemsPrice));
 
   const calcTotal = ((total * 100 - price * 100 * multiple) / 100);
   let filter = products.filter((item) => item.productID !== productID);
