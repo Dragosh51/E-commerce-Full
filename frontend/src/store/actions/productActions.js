@@ -7,7 +7,7 @@ export const ERROR_FETCH = 'ERROR_FETCH';
 export const fetchProducts = () => (dispatch) => {
     dispatch({ type: 'FETCHING_PRODUCTS' });
     axios
-      .get(`http://localhost:5343/products`)
+      .get(`http://localhost:5343/products/products`)
       .then((response) => {
         dispatch({
           type: 'FETCHED_PRODUCTS',

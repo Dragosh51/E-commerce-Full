@@ -28,7 +28,8 @@ function App() {
     <Routes>
       <Route path="/Login" element={<NonPrivateRoute><Login /></NonPrivateRoute>} />
       <Route path="/Register" element={<NonPrivateRoute><Register /></NonPrivateRoute>} />
-      <Route path="/" element={<PrivateRoute><Home /></PrivateRoute>} />
+      <Route path="/" exact element={<PrivateRoute><Home /></PrivateRoute>} />
+      <Route path="/Cart" element={<PrivateRoute><Cart /></PrivateRoute>} />
       {/* <PrivateRoute path='/Home' element={<Home />} />
           <PrivateRoute path='/Cart' element={<Cart />} />
           <PrivateRoute path='/Checkout' element={<Checkout />} /> */}

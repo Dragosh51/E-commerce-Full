@@ -2,8 +2,8 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 
 const Cart = () => {
-  // Assuming you have a 'cart' slice in your Redux store
-  const cartItems = useSelector((state) => state.cart);
+  const cartItems = useSelector((state) => state.cart.cartItems);
+  // const cartItems = [];
 
   return (
     <div>
@@ -14,7 +14,7 @@ const Cart = () => {
         <ul>
           {cartItems.map((item) => (
             <li key={item.productID}>
-              {item.productName} - Quantity: 1 
+              {item.productName} - Quantity: {item.quantity ? item.quantity : 0}
             </li>
           ))}
         </ul>
