@@ -10,10 +10,33 @@
 }
 
 .cart-button {
-    position: absolute; 
-    top: 20px; 
-    right: 20px; 
-  }
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background-color: white;
+  padding: 8px 12px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.cart-button a {
+  text-decoration: none;
+  color: black;
+}
+
+.cart-button .cart-count {
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 8px;
+  font-size: 14px;
+}
 
   .products-container-wrapper {
     display: flex;

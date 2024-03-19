@@ -35,7 +35,7 @@ const Home = () => {
       <div className='cart-button'>
         <Link to='/Cart'>Cart</Link>
         { cartItem.length > 0 && 
-          <div>{cartItem.length}</div>
+          <div className="cart-count">{cartItem.length}</div>
         }
       </div>
       <div className='products-container'>
